@@ -98,17 +98,17 @@ def up(update, context):
         size = get_path_size(f'{up_dir}/{name}')
         sendMessage(f"Uploading: {name}",context.bot,update.message)
         drive = GoogleDriveHelper(name, up_dir, listener)
-        upload_status = UploadStatus(drive, size, gid, listener)"""
+        upload_status = UploadStatus(drive, size, gid, listener)
             
-        '''
+        
         with download_dict_lock:
             download_dict[uid] = upload_status
         update_all_messages()
-        '''
+        
         #drive.upload(name)
        
       else:
-          sendMessage(f"Send File Name",context.bot,update.message) 
+          sendMessage(f"Send File Name",context.bot,update.message)""" 
 up_handler = CommandHandler(BotCommands.UpCommand, up,
                                filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
 dispatcher.add_handler(up_handler)
