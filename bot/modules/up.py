@@ -42,6 +42,7 @@ def up(update, context):
         try:
          response = upload_file(url,cmd)
          print(response)
+         sendMessage(f"{response}",context.bot,update.message)
          if response:
            response_data = json.loads(response)
            if response_data.get('status') == 'ok':
