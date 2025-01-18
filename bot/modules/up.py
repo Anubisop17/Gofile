@@ -43,6 +43,9 @@ def up(update, context):
          response = upload_file(url,cmd)
          print(response)
          sendMessage(f"{response}",context.bot,update.message)
+         download_page = response['data']['downloadPage']
+         filename2 = response_data['data']['name']
+         sendMessage(f"<b>{filename2}</b> \nLink: {download_page}\n\n",context.bot,update.message)
          if response:
            response_data = json.loads(response)
            if response_data.get('status') == 'ok':
