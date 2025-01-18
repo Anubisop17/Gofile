@@ -35,7 +35,7 @@ def up(update, context):
       msg = sendMessage("Link Istunna pushpa... kasepu wait chey",context.bot,update.message)
       #ptint(cmd)
       urls = [
-    'https://store-eu-par-4.gofile.io/uploadFile'
+    'https://store-eu-par-4.gofile.io/contents/uploadfile'
       ]
       successful_upload = False
       for url in urls:
