@@ -40,7 +40,8 @@ def up(update, context):
       successful_upload = False
       for url in urls:
         try:
-         response = upload_file(url,cmd)  
+         response = upload_file(url,cmd)
+         print(response)
          if response:
            response_data = json.loads(response)
            if response_data.get('status') == 'ok':
