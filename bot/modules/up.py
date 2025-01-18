@@ -81,9 +81,9 @@ def up(update, context):
         msg = f"https://pixeldrain.com/api/file/{file_id}"
         sendMessage(msg,context.bot,update.message)
         subprocess.run(["rm", "-rf",name])
-        deleteMessage(context.bot, msg2)"""
+        deleteMessage(context.bot, msg2)
         
-        """uid = update.message.message_id
+        uid = update.message.message_id
         tag = update.message.from_user.mention_html(update.message.from_user.first_name)
         gid = ''.join(random.SystemRandom().choices(string.ascii_letters + string.digits, k=12))
         listener = CompressListener(context.bot, update.message, is_archive=False, is_extract=False,)
