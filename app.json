@@ -6,9 +6,9 @@
       "bot",
       "shell"
     ],
-    "repository": "https://github.com/vedamithra430/Clone-BOT",
-    "website": "https://github.com/vedamithra430/Clone-BOT",
-    "success_url": "https://github.com/vedamithra430/Clone-BOT",
+    "repository": "https://github.com/Anubisop17/Gofile",
+    "website": "https://github.com/Anubisop17/Gofile",
+    "success_url": "https://github.com/Anubisop17/Gofile",
     "stack": "container",
     "env": {
       "BOT_TOKEN": {
