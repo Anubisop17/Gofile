@@ -47,7 +47,9 @@ def up(update, context):
               download_page = response_data['data']['downloadPage']
               filename2 = response_data['data']['name']
               deleteMessage(context.bot, msg)
-              if update.message.from_user and update.message.from_user.id == int(jithu1):
+              sendMessage(f"<b>{filename2}</b> \nLink: {download_page}\n\nJoin Our channel for more movies🥰.",context.bot,update.message)
+              successful_upload = True
+              """if update.message.from_user and update.message.from_user.id == int(jithu1):
                     short = requests.get(
                         f"https://modijiurl.com/api?api=8543b643f5f63bb15979556c130b9f4d64e30576&url={download_page}&format=text"
                     ).text
@@ -57,7 +59,7 @@ def up(update, context):
 
               else:
                     sendMessage(f"<b>{filename2}</b> \nLink: {download_page}\n\nJoin Our channel for more movies🥰.",context.bot,update.message)
-                    successful_upload = True
+                    successful_upload = True"""
                 
               break  # Exit loop if successful
            else:
