@@ -19,7 +19,58 @@ from bot.helper.telegram_helper.filters import CustomFilters
 from pathlib import PurePath
 from .compress import CompressListener
 from bot.helper.status_utils.upload_status import UploadStatus
+
+
+def upload_file(url,cmd):
+    result = subprocess.run(['curl', '-F', f"file=@{cmd}", url], capture_output=True, text=True)
+    return result.stdout
+
 def up(update, context):
+    args = update.message.text.split(" ")
+    jithu1 = "1952992043"
+    if len(args) > 1:
+      uid = update.message.message_id
+      cmd = " ".join(map(str, args[1:]))
+      #name = f'Sample.mkv'
+      msg = sendMessage("Link Istunna pushpa... kasepu wait chey",context.bot,update.message)
+      #ptint(cmd)
+      urls = [
+    'https://store-eu-par-4.gofile.io/uploadFile'
+      ]
+      successful_upload = False
+      for url in urls:
+        try:
+         response = upload_file(url,cmd)  
+         if response:
+           response_data = json.loads(response)
+           if response_data.get('status') == 'ok':
+              download_page = response_data['data']['downloadPage']
+              filename2 = response_data['data']['name']
+              deleteMessage(context.bot, msg)
+              if update.message.from_user and update.message.from_user.id == int(jithu1):
+                    short = requests.get(
+                        f"https://modijiurl.com/api?api=8543b643f5f63bb15979556c130b9f4d64e30576&url={download_page}&format=text"
+                    ).text
+                    text = f"<b>{filename2}</b>\n\n{short}\n\n<b>Join @Tmaaddaa for latest movie updates❤️❤️.</b>"
+                    sendMessage(text, context.bot, update.message)
+                    successful_upload = True
+
+              else:
+                    sendMessage(f"<b>{filename2}</b> \nLink: {download_page}\n\nJoin Our channel for more movies🥰.",context.bot,update.message)
+                    successful_upload = True
+                
+              break  # Exit loop if successful
+           else:
+             print(f"Failed to upload to {url}: {response_data}")
+        except Exception as e:
+           print(f"Exception occurred with {url}: {e}")
+      deleteMessage(context.bot, msg)
+
+
+
+
+
+"""def up(update, context):
       args = update.message.text.split(" ",maxsplit=1)
       if(len(args) > 1):
         msg2 = sendMessage(f"Processing..",context.bot,update.message) 
@@ -30,7 +81,7 @@ def up(update, context):
         msg = f"https://pixeldrain.com/api/file/{file_id}"
         sendMessage(msg,context.bot,update.message)
         subprocess.run(["rm", "-rf",name])
-        deleteMessage(context.bot, msg2)
+        deleteMessage(context.bot, msg2)"""
         
         """uid = update.message.message_id
         tag = update.message.from_user.mention_html(update.message.from_user.first_name)
